@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Greeting from "./components/Greeting";
 import Weather from "./components/Weather";
-//import Date from "./components/Date";
+import Stats from "./components/Stats";
 
 export default class App extends Component {
   render() {

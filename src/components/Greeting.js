@@ -43,7 +43,7 @@ export class Greeting extends Component {
             ? `Good Morning ${username}`
             : hour < 5 && date.toLocaleTimeString().includes("PM")
             ? `Good Afternoon ${username}`
-            : hour > 5 && date.toLocaleTimeString().includes("PM")
+            : hour > 17 && date.toLocaleTimeString().includes("PM")
             ? `Good Evening ${username}`
             : `Good Evening ${username}`}
         </h2>
