@@ -15,11 +15,12 @@ body {
 .app {
   width: 100%;
   height: 100%;
-  background-image: url(./assets/mountain-background.jpg);
+  /*background-image: url(./assets/mountain-background.jpg);*/
   background-size: cover;
   background-position: center;
 }
 main {
+  z-index: 2;
   min-height: 100vh;
   overflow: hidden;
   padding: 25px;
@@ -84,4 +85,5 @@ main {
 }
 .stats-container ul li {
   list-style: none;
+  background-image: url();
 }

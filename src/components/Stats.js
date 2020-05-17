@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Weather from "./Weather";
 export class Stats extends Component {
   constructor(props) {
@@ -11,17 +10,19 @@ export class Stats extends Component {
       fun: 5,
       energy: 10,
       weather: "",
+      icon: "",
       options: {
-        clearDay: ["Go for a Run", "Go to the Museum", "Call a friend"],
-        clearNight: ["Go for a Run", "Watch the News", "Sleep"],
-
+        clear: ["Go for a Run", "Go to the Museum", "Call a friend"],
         rain: ["Watch TV", "Read a Book", "Sleep"],
+        cloudy: ["Go to the movies", "Work on vocabulary", "Play a game"],
 
-        partlyCloudyDay: ["Go hiking", "Study", "Go"],
-
-        partlyCloudyNight: ["Play a board game", "Sleep", "Study"],
-
-        cloudy: ["Go to the movies", "Visit a friend", "Play a game"],
+        lightRain: ["Go hiking", "Study at the library", "Visit a friend"],
+        mostlyCloudy: ["Do yoga at the park", "Meditate", "Go to a BBQ"],
+        partlyCloudy: [
+          "Do yoga at the park",
+          "Create diagrams",
+          "Visit an Aquarium",
+        ],
       },
     };
   }
@@ -50,23 +51,98 @@ export class Stats extends Component {
       energy: this.state.energy - 1,
     });
   };
+
   //Option Buttons
 
+  optionSelectOne = (e) => {
+    switch (e) {
+      case "Light Rain":
+        return this.state.options.lightRain[0];
+        break;
+      case "Mostly Cloudy":
+        return this.state.options.mostlyCloudy[0];
+        break;
+      case "Partly Cloudy":
+        return this.state.options.partlyCloudy[0];
+        break;
+      case "Clear":
+        return this.state.options.clear[0];
+        break;
+      case "Rain":
+        return this.state.options.rain[0];
+        break;
+      case "Cloudy":
+        return this.state.options.cloudy[0];
+        break;
+      default:
+        break;
+    }
+  };
+  optionSelectTwo = (e) => {
+    switch (e) {
+      case "Light Rain":
+        return this.state.options.lightRain[1];
+        break;
+      case "Mostly Cloudy":
+        return this.state.options.mostlyCloudy[1];
+        break;
+      case "Partly Cloudy":
+        return this.state.options.partlyCloudy[1];
+        break;
+      case "Clear":
+        return this.state.options.clear[1];
+        break;
+      case "Rain":
+        return this.state.options.rain[1];
+        break;
+      case "Cloudy":
+        return this.state.options.cloudy[1];
+        break;
+      default:
+        break;
+    }
+  };
+  optionSelectThree = (e) => {
+    switch (e) {
+      case "Light Rain":
+        return this.state.options.lightRain[2];
+        break;
+      case "Mostly Cloudy":
+        return this.state.options.mostlyCloudy[2];
+        break;
+      case "Partly Cloudy":
+        return this.state.options.partlyCloudy[2];
+        break;
+      case "Clear":
+        return this.state.options.clear[2];
+        break;
+      case "Rain":
+        return this.state.options.rain[2];
+        break;
+      case "Cloudy":
+        return this.state.options.cloudy[2];
+        break;
+      default:
+        break;
+    }
+  };
   render() {
     let { intelligence, strength, charisma, options } = this.state;
+    console.log(this.props);
     return (
       <div>
         <div className="option-container">
           <button className="option" onClick={this.activeOption}>
-            {options.clearDay[0]}
+            {this.optionSelectOne(this.props.weather)}
           </button>
           <button className="option" onClick={this.smartOption}>
-            {options.clearDay[1]}
+            {this.optionSelectTwo(this.props.weather)}
           </button>
           <button className="option" onClick={this.charismaOption}>
-            {options.clearDay[2]}
+            {this.optionSelectThree(this.props.weather)}
           </button>
         </div>
+
         <div className="stats-container">
           <ul>
             <li>Strength:{strength}</li>

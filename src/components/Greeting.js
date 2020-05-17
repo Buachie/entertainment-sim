@@ -2,16 +2,8 @@ import React, { Component } from "react";
 
 export class Greeting extends Component {
   state = {
-    //Date formatting
-    options: {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    },
     date: new Date(),
     hour: null,
-    minutes: null,
     username: "Aaron",
   };
 
@@ -25,12 +17,11 @@ export class Greeting extends Component {
   getHour = () => {
     const date = new Date();
     const hour = date.getHours();
-    const minutes = date.getMinutes();
-    this.setState({ hour, minutes });
+    this.setState({ hour });
   };
 
   render() {
-    const { hour, minutes, username, date } = this.state;
+    const { hour, username, date } = this.state;
 
     return (
       <div className="greeting-container">
