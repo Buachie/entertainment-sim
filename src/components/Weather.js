@@ -45,7 +45,7 @@ export class Weather extends Component {
   //Get weather info
   getWeather = () => {
     //Access api data
-    const api = `https://api.darksky.net/forecast/15abec103b4ca0854030b4462f9754ca/${this.state.lat},${this.state.long}`;
+    const api = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/15abec103b4ca0854030b4462f9754ca/${this.state.lat},${this.state.long}`;
     fetch(api)
       .then((response) => {
         return response.json();
