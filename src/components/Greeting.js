@@ -1,17 +1,34 @@
 import React, { Component } from "react";
 
 export class Greeting extends Component {
-  state = {
-    date: new Date(),
-    hour: null,
-    username: "Aaron",
-  };
+  userData;
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: new Date(),
+      hour: null,
+      username: "",
+    };
+  }
 
   componentDidMount() {
+    //Get username from local storage
+    this.userData = JSON.parse(localStorage.getItem("user"));
+    if (localStorage.getItem("user")) {
+      this.setState({ username: this.userData });
+    } else {
+      let name = prompt("What is your name?");
+      this.setState({ username: name });
+    }
+    //Start and refresh current time and date
     setInterval(() => {
       //this.getHour();
       this.setState({ date: new Date() });
     }, 1000); //Update interval
+  }
+  //Store name in local storage
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem("user", JSON.stringify(nextState.username));
   }
 
   getHour = () => {

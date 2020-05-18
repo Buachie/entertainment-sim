@@ -5,6 +5,8 @@ export class Background extends Component {
     super();
     this.state = {
       imageURLS: [],
+      pageURLS: [],
+      users: [],
     };
   }
 
@@ -14,17 +16,21 @@ export class Background extends Component {
     fetch(api)
       .then((res) => res.json())
       .then((data) => {
-        //console.log(data);
+        console.log(data);
         let imageURLS = [];
+        let pageURLS = [];
+        let users = [];
         for (let i = 0; i < data.hits.length; i++) {
           imageURLS.push(data.hits[i].largeImageURL);
+          pageURLS.push(data.hits[i].pageURL);
+          users.push(data.hits[i].user);
         }
-        this.setState({ imageURLS });
-        //console.log(this.state);
+        this.setState({ imageURLS, pageURLS, users });
+        console.log(this.state);
       });
   };
 
-  randomizer = (max) => {
+  backgroundRandomizer = (max) => {
     let index = Math.floor(Math.random() * Math.floor(max));
     return this.state.imageURLS[index];
   };
@@ -40,12 +46,18 @@ export class Background extends Component {
       position: "absolute",
       top: "0",
       left: "0",
-      backgroundImage: `url(${this.randomizer(this.state.imageURLS.length)})`,
+      backgroundImage: `url(${this.backgroundRandomizer(
+        this.state.imageURLS.length
+      )})`,
       backgroundPosition: "center",
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
     };
-    return <div className="background" style={backgroundPhoto}></div>;
+    return (
+      <div className="background" style={backgroundPhoto}>
+        <div className="credits"></div>
+      </div>
+    );
   }
 }
 

@@ -35,34 +35,49 @@ export class Stats extends Component {
   }
 
   activeOption = () => {
-    this.setState({
-      strength: this.state.strength + 2,
-      intelligence: this.state.intelligence - 1,
-      charisma: this.state.charisma + 1,
-      energy: this.state.energy - 2,
-    });
-    this.optionCooldown();
-    this.optionReset();
+    //Check if energy is less than 2
+    if (this.state.energy < 2) {
+      alert("You don't have enough energy! Rest a bit and try again later");
+    } else {
+      this.setState({
+        strength: this.state.strength + 2,
+        intelligence: this.state.intelligence - 1,
+        charisma: this.state.charisma + 1,
+        energy: this.state.energy - 2,
+      });
+      this.optionCooldown();
+      this.optionReset();
+    }
   };
   smartOption = () => {
-    this.setState({
-      strength: this.state.strength - 1,
-      intelligence: this.state.intelligence + 3,
-      charisma: this.state.charisma - 1,
-      energy: this.state.energy - 1,
-    });
-    this.optionCooldown();
-    this.optionReset();
+    //Check if energy is less than or equal to 0
+    if (this.state.energy <= 0) {
+      alert("You don't have enough energy! Rest a bit and try again later");
+    } else {
+      this.setState({
+        strength: this.state.strength - 1,
+        intelligence: this.state.intelligence + 3,
+        charisma: this.state.charisma - 1,
+        energy: this.state.energy - 1,
+      });
+      this.optionCooldown();
+      this.optionReset();
+    }
   };
   charismaOption = () => {
-    this.setState({
-      strength: this.state.strength - 1,
-      intelligence: this.state.intelligence + 1,
-      charisma: this.state.charisma + 2,
-      energy: this.state.energy - 2,
-    });
-    this.optionCooldown();
-    this.optionReset();
+    //Check if energy is less than 2
+    if (this.state.energy < 2) {
+      alert("You don't have enough energy! Rest a bit and try again later");
+    } else {
+      this.setState({
+        strength: this.state.strength - 1,
+        intelligence: this.state.intelligence + 1,
+        charisma: this.state.charisma + 2,
+        energy: this.state.energy - 2,
+      });
+      this.optionCooldown();
+      this.optionReset();
+    }
   };
 
   //Removes option selection after a button is clicked
@@ -71,11 +86,9 @@ export class Stats extends Component {
   };
   //Makes options reappear after the set time
   optionReset = () => {
-    this.state.displayButton = false
-      ? setTimeout(() => {
-          this.setState({ displayButton: true });
-        }, 3000)
-      : console.log(this.state.displayButton);
+    setTimeout(() => {
+      this.setState({ displayButton: true });
+    }, 3000);
   };
   //Restores Energy overtime
   restoreEnergy = () => {
@@ -188,7 +201,7 @@ export class Stats extends Component {
     localStorage.setItem("intelligence", nextState.intelligence);
     localStorage.setItem("charisma", nextState.charisma);
     localStorage.setItem("energy", nextState.energy);
-    localStorage.setItem("displayButton", nextState.displayButton);
+    //localStorage.setItem("displayButton", nextState.displayButton);
   }
   //Retrieve Data from Local Storage
   componentWillMount() {
@@ -196,15 +209,15 @@ export class Stats extends Component {
       "strength",
       "intelligence",
       "charisma",
-      "energy",
-      "displayButton"
+      "energy"
+      //"displayButton"
     ) &&
       this.setState({
         strength: JSON.parse(localStorage.getItem("strength")),
         intelligence: JSON.parse(localStorage.getItem("intelligence")),
         charisma: JSON.parse(localStorage.getItem("charisma")),
         energy: JSON.parse(localStorage.getItem("energy")),
-        displayButton: JSON.parse(localStorage.getItem("displayButton")),
+        //displayButton: JSON.parse(localStorage.getItem("displayButton")),
       });
   }
   render() {
@@ -212,7 +225,8 @@ export class Stats extends Component {
     console.log(this.props);
 
     return (
-      <div>
+      <div className="option-stats">
+        <h3>What would you like to do?</h3>
         <div
           className="option-container"
           style={{ display: `${this.state.displayButton ? "block" : "none"}` }}
@@ -227,7 +241,6 @@ export class Stats extends Component {
             {this.optionSelectThree(this.props.weather)}
           </button>
         </div>
-
         <div className="stats-container">
           <ul>
             <li>Strength:{strength}</li>
