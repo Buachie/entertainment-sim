@@ -35,22 +35,24 @@ export class Weather extends Component {
     };
 
     navigator.geolocation.getCurrentPosition(success, error);
+    /*
     setTimeout(() => {
       this.getLocation();
     }, 3000);
+    */
   };
 
   //Get weather info
   getWeather = () => {
     //Access api data
-    const api = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/15abec103b4ca0854030b4462f9754ca/${this.state.lat},${this.state.long}`;
+    const api = `https://api.darksky.net/forecast/15abec103b4ca0854030b4462f9754ca/${this.state.lat},${this.state.long}`;
     fetch(api)
       .then((response) => {
         return response.json();
       })
       .then(
         (data) => {
-          console.log(data);
+          //console.log(data);
           const temp = data.currently.temperature;
           const place = data.timezone.replace(/_/g, " ");
           const weather = data.currently.summary;
@@ -58,10 +60,12 @@ export class Weather extends Component {
             "(Feels like) " + data.currently.apparentTemperature;
           const icon = data.currently.icon;
           this.setState({ temp, place, weather, icon, apparentTemp });
-        },
+        }
+        /*
         setTimeout(() => {
           this.getWeather();
         }, 300000)
+        */
       );
   };
   componentDidMount() {

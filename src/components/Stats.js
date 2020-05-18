@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Weather from "./Weather";
+import { getNodeText } from "@testing-library/react";
 export class Stats extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +23,14 @@ export class Stats extends Component {
           "Create diagrams",
           "Visit an Aquarium",
         ],
+        drizzle: [
+          "Do some gardening",
+          "Practice an instrument",
+          "Go to an amusement park",
+        ],
+        overcast: ["Go to the gym", "Listen to classical music", "Volunteer"],
       },
+      displayButton: true,
     };
   }
 
@@ -32,8 +39,10 @@ export class Stats extends Component {
       strength: this.state.strength + 2,
       intelligence: this.state.intelligence - 1,
       charisma: this.state.charisma + 1,
-      energy: this.state.energy - 1,
+      energy: this.state.energy - 2,
     });
+    this.optionCooldown();
+    this.optionReset();
   };
   smartOption = () => {
     this.setState({
@@ -42,18 +51,43 @@ export class Stats extends Component {
       charisma: this.state.charisma - 1,
       energy: this.state.energy - 1,
     });
+    this.optionCooldown();
+    this.optionReset();
   };
   charismaOption = () => {
     this.setState({
       strength: this.state.strength - 1,
       intelligence: this.state.intelligence + 1,
       charisma: this.state.charisma + 2,
-      energy: this.state.energy - 1,
+      energy: this.state.energy - 2,
     });
+    this.optionCooldown();
+    this.optionReset();
   };
 
-  //Option Buttons
+  //Removes option selection after a button is clicked
+  optionCooldown = () => {
+    this.setState({ displayButton: false });
+  };
+  //Makes options reappear after the set time
+  optionReset = () => {
+    this.state.displayButton = false
+      ? setTimeout(() => {
+          this.setState({ displayButton: true });
+        }, 3000)
+      : console.log(this.state.displayButton);
+  };
+  //Restores Energy overtime
+  restoreEnergy = () => {
+    setTimeout(() => {
+      this.state.energy < 10
+        ? this.setState({ energy: this.state.energy + 1 })
+        : console.log(this.state.energy);
+      this.restoreEnergy();
+    }, 500000);
+  };
 
+  //Button Options
   optionSelectOne = (e) => {
     switch (e) {
       case "Light Rain":
@@ -73,6 +107,12 @@ export class Stats extends Component {
         break;
       case "Cloudy":
         return this.state.options.cloudy[0];
+        break;
+      case "Drizzle":
+        return this.state.options.drizzle[0];
+        break;
+      case "Overcast":
+        return this.state.options.overcast[0];
         break;
       default:
         break;
@@ -98,6 +138,12 @@ export class Stats extends Component {
       case "Cloudy":
         return this.state.options.cloudy[1];
         break;
+      case "Drizzle":
+        return this.state.options.drizzle[1];
+        break;
+      case "Overcast":
+        return this.state.options.overcast[1];
+        break;
       default:
         break;
     }
@@ -122,16 +168,55 @@ export class Stats extends Component {
       case "Cloudy":
         return this.state.options.cloudy[2];
         break;
+      case "Drizzle":
+        return this.state.options.drizzle[2];
+        break;
+      case "Overcast":
+        return this.state.options.overcast[2];
+        break;
       default:
         break;
     }
   };
+  componentDidMount() {
+    //this.optionReset();
+    this.restoreEnergy();
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem("strength", nextState.strength);
+    localStorage.setItem("intelligence", nextState.intelligence);
+    localStorage.setItem("charisma", nextState.charisma);
+    localStorage.setItem("energy", nextState.energy);
+    localStorage.setItem("displayButton", nextState.displayButton);
+  }
+  //Retrieve Data from Local Storage
+  componentWillMount() {
+    localStorage.getItem(
+      "strength",
+      "intelligence",
+      "charisma",
+      "energy",
+      "displayButton"
+    ) &&
+      this.setState({
+        strength: JSON.parse(localStorage.getItem("strength")),
+        intelligence: JSON.parse(localStorage.getItem("intelligence")),
+        charisma: JSON.parse(localStorage.getItem("charisma")),
+        energy: JSON.parse(localStorage.getItem("energy")),
+        displayButton: JSON.parse(localStorage.getItem("displayButton")),
+      });
+  }
   render() {
-    let { intelligence, strength, charisma, options } = this.state;
+    let { intelligence, strength, charisma, energy } = this.state;
     console.log(this.props);
+
     return (
       <div>
-        <div className="option-container">
+        <div
+          className="option-container"
+          style={{ display: `${this.state.displayButton ? "block" : "none"}` }}
+        >
           <button className="option" onClick={this.activeOption}>
             {this.optionSelectOne(this.props.weather)}
           </button>
@@ -148,6 +233,7 @@ export class Stats extends Component {
             <li>Strength:{strength}</li>
             <li>Intelligence:{intelligence}</li>
             <li>Charisma:{charisma}</li>
+            <li>Energy:{energy}</li>
           </ul>
         </div>
       </div>

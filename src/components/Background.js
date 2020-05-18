@@ -10,17 +10,17 @@ export class Background extends Component {
 
   getBackground = () => {
     const api =
-      "https://cors-anywhere.herokuapp.com/https://pixabay.com/api/?key=14272018-277a44d4d1ae6e42f42ed7772&q=landscape&image_type=photo";
+      "https://pixabay.com/api/?key=14272018-277a44d4d1ae6e42f42ed7772&q=landscape&image_type=photo";
     fetch(api)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         let imageURLS = [];
         for (let i = 0; i < data.hits.length; i++) {
           imageURLS.push(data.hits[i].largeImageURL);
         }
         this.setState({ imageURLS });
-        console.log(this.state);
+        //console.log(this.state);
       });
   };
 
@@ -36,13 +36,14 @@ export class Background extends Component {
     let backgroundPhoto = {
       zIndex: "-1",
       width: "100%",
-      height: "100%",
+      minHeight: "100%",
       position: "absolute",
       top: "0",
       left: "0",
       backgroundImage: `url(${this.randomizer(this.state.imageURLS.length)})`,
       backgroundPosition: "center",
       backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
     };
     return <div className="background" style={backgroundPhoto}></div>;
   }
