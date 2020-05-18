@@ -88,7 +88,7 @@ export class Stats extends Component {
   optionReset = () => {
     setTimeout(() => {
       this.setState({ displayButton: true });
-    }, 3000);
+    }, 30000);
   };
   //Restores Energy overtime
   restoreEnergy = () => {
@@ -97,7 +97,7 @@ export class Stats extends Component {
         ? this.setState({ energy: this.state.energy + 1 })
         : console.log(this.state.energy);
       this.restoreEnergy();
-    }, 500000);
+    }, 20000);
   };
 
   //Button Options
@@ -222,7 +222,7 @@ export class Stats extends Component {
   }
   render() {
     let { intelligence, strength, charisma, energy } = this.state;
-    console.log(this.props);
+    //console.log(this.props);
 
     return (
       <div className="option-stats">

@@ -16,7 +16,7 @@ export class Background extends Component {
     fetch(api)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         let imageURLS = [];
         let pageURLS = [];
         let users = [];
@@ -26,7 +26,7 @@ export class Background extends Component {
           users.push(data.hits[i].user);
         }
         this.setState({ imageURLS, pageURLS, users });
-        console.log(this.state);
+        //console.log(this.state);
       });
   };
 
