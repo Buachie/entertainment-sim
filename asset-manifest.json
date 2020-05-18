@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/entertainment-sim/static/css/main.ad84cedc.chunk.css",
+    "main.js": "/entertainment-sim/static/js/main.061ca587.chunk.js",
+    "main.js.map": "/entertainment-sim/static/js/main.061ca587.chunk.js.map",
+    "runtime-main.js": "/entertainment-sim/static/js/runtime-main.fbbedb2c.js",
+    "runtime-main.js.map": "/entertainment-sim/static/js/runtime-main.fbbedb2c.js.map",
+    "static/js/2.8d1ac978.chunk.js": "/entertainment-sim/static/js/2.8d1ac978.chunk.js",
+    "static/js/2.8d1ac978.chunk.js.map": "/entertainment-sim/static/js/2.8d1ac978.chunk.js.map",
+    "index.html": "/entertainment-sim/index.html",
+    "precache-manifest.f53e3f568a445e170392bf2ca9294b90.js": "/entertainment-sim/precache-manifest.f53e3f568a445e170392bf2ca9294b90.js",
+    "service-worker.js": "/entertainment-sim/service-worker.js",
+    "static/css/main.ad84cedc.chunk.css.map": "/entertainment-sim/static/css/main.ad84cedc.chunk.css.map",
+    "static/js/2.8d1ac978.chunk.js.LICENSE.txt": "/entertainment-sim/static/js/2.8d1ac978.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fbbedb2c.js",
+    "static/js/2.8d1ac978.chunk.js",
+    "static/css/main.ad84cedc.chunk.css",
+    "static/js/main.061ca587.chunk.js"
+  ]
+}
