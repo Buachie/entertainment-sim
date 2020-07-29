@@ -33,13 +33,15 @@ export class Greeting extends Component {
 
   getHour = () => {
     const date = new Date();
-    const hour = date.getHours();
+    const hour = date.getHours;
     this.setState({ hour });
   };
-
+  componentDidMount(){
+    this.getHour()
+  }
   render() {
     const { hour, username, date } = this.state;
-
+console.log(this.state)
     return (
       <div className="greeting-container">
         <h1 className="time-container">{date.toLocaleTimeString()}</h1>
