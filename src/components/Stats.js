@@ -29,6 +29,7 @@ export class Stats extends Component {
           "Go to an amusement park",
         ],
         overcast: ["Go to the gym", "Listen to classical music", "Volunteer"],
+        humid: ["Go swimming at the pool", "Go to a book cafe", "Go camping with friends"]
       },
       displayButton: true,
     };
@@ -127,6 +128,9 @@ export class Stats extends Component {
       case "Overcast":
         return this.state.options.overcast[0];
         break;
+      case "Humid":
+        return this.state.options.humid[0];
+        break;
       default:
         break;
     }
@@ -157,6 +161,9 @@ export class Stats extends Component {
       case "Overcast":
         return this.state.options.overcast[1];
         break;
+      case "Humid":
+        return this.state.options.humid[1];
+        break;
       default:
         break;
     }
@@ -186,6 +193,9 @@ export class Stats extends Component {
         break;
       case "Overcast":
         return this.state.options.overcast[2];
+        break;
+      case "Humid":
+        return this.state.options.humid[2];
         break;
       default:
         break;
