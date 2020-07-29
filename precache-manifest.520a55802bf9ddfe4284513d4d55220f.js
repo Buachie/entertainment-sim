@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e13c1ca255f0a86d74eb95f13d32ace3",
+    "revision": "ec0e6b40f4cf8b3ec975b61fef414063",
     "url": "/entertainment-sim/index.html"
   },
   {
-    "revision": "a6770045b45a3306688d",
+    "revision": "8f8f5ca90b1c79c0d743",
     "url": "/entertainment-sim/static/css/main.ad84cedc.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/entertainment-sim/static/js/2.f654dca3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a6770045b45a3306688d",
-    "url": "/entertainment-sim/static/js/main.ad6c62c1.chunk.js"
+    "revision": "8f8f5ca90b1c79c0d743",
+    "url": "/entertainment-sim/static/js/main.a4faad77.chunk.js"
   },
   {
     "revision": "faf2756b132290bf2fee",

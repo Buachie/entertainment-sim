@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/entertainment-sim/static/css/main.ad84cedc.chunk.css",
-    "main.js": "/entertainment-sim/static/js/main.ad6c62c1.chunk.js",
-    "main.js.map": "/entertainment-sim/static/js/main.ad6c62c1.chunk.js.map",
+    "main.js": "/entertainment-sim/static/js/main.a4faad77.chunk.js",
+    "main.js.map": "/entertainment-sim/static/js/main.a4faad77.chunk.js.map",
     "runtime-main.js": "/entertainment-sim/static/js/runtime-main.fbbedb2c.js",
     "runtime-main.js.map": "/entertainment-sim/static/js/runtime-main.fbbedb2c.js.map",
     "static/js/2.f654dca3.chunk.js": "/entertainment-sim/static/js/2.f654dca3.chunk.js",
     "static/js/2.f654dca3.chunk.js.map": "/entertainment-sim/static/js/2.f654dca3.chunk.js.map",
     "index.html": "/entertainment-sim/index.html",
-    "precache-manifest.8afe2d5b9fba2e83d66130aa4dd52772.js": "/entertainment-sim/precache-manifest.8afe2d5b9fba2e83d66130aa4dd52772.js",
+    "precache-manifest.520a55802bf9ddfe4284513d4d55220f.js": "/entertainment-sim/precache-manifest.520a55802bf9ddfe4284513d4d55220f.js",
     "service-worker.js": "/entertainment-sim/service-worker.js",
     "static/css/main.ad84cedc.chunk.css.map": "/entertainment-sim/static/css/main.ad84cedc.chunk.css.map",
     "static/js/2.f654dca3.chunk.js.LICENSE.txt": "/entertainment-sim/static/js/2.f654dca3.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.fbbedb2c.js",
     "static/js/2.f654dca3.chunk.js",
     "static/css/main.ad84cedc.chunk.css",
-    "static/js/main.ad6c62c1.chunk.js"
+    "static/js/main.a4faad77.chunk.js"
   ]
 }
