@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "23a56f20b32baa3b061e6ecf506d7b31",
+    "revision": "48762012987bcc2cd4bde4a75b587e9c",
     "url": "/entertainment-sim/index.html"
   },
   {
