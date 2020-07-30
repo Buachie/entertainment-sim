@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { getNodeText } from "@testing-library/react";
 export class Stats extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +14,6 @@ export class Stats extends Component {
         clear: ["Go for a Run", "Go to the Museum", "Call a friend"],
         rain: ["Watch TV", "Read a Book", "Sleep"],
         cloudy: ["Go to the movies", "Work on vocabulary", "Play a game"],
-
         lightRain: ["Go hiking", "Study at the library", "Visit a friend"],
         mostlyCloudy: ["Do yoga at the park", "Meditate", "Go to a BBQ"],
         partlyCloudy: [
@@ -89,7 +87,7 @@ export class Stats extends Component {
   optionReset = () => {
     setTimeout(() => {
       this.setState({ displayButton: true });
-    }, 30000);
+    }, 3600000);
   };
   //Restores Energy overtime
   restoreEnergy = () => {
@@ -98,7 +96,7 @@ export class Stats extends Component {
         ? this.setState({ energy: this.state.energy + 1 })
         : console.log(this.state.energy);
       this.restoreEnergy();
-    }, 20000);
+    }, 7000000);
   };
 
   //Button Options

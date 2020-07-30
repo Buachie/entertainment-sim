@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import Greeting from "./Greeting"
+import Weather from "./Weather";
 export class Background extends Component {
   constructor() {
     super();
@@ -40,7 +41,7 @@ export class Background extends Component {
 
   render() {
     let backgroundPhoto = {
-      zIndex: "-1",
+      zIndex: "3",
       width: "100%",
       minHeight: "100%",
       position: "absolute",
@@ -55,7 +56,15 @@ export class Background extends Component {
     };
     return (
       <div className="background" style={backgroundPhoto}>
-        <div className="credits"></div>
+        <main className="main-container">
+          <div className="search-box">
+            <input type="text" className="search-bar" placeholder="Search..." />
+          </div>
+          <div className="flex-container">
+            <Greeting />
+          </div>
+          <Weather />
+        </main>
       </div>
     );
   }

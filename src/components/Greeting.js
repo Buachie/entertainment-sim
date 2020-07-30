@@ -7,14 +7,13 @@ export class Greeting extends Component {
     this.state = {
       date: new Date(),
       hour: null,
-      username: "",
+      username: null,
     };
   }
-
   componentDidMount() {
     //Get username from local storage
     this.userData = JSON.parse(localStorage.getItem("user"));
-    if (localStorage.getItem("user")) {
+    if (localStorage.getItem("user") !== null) {
       this.setState({ username: this.userData });
     } else {
       let name = prompt("What is your name?");
@@ -23,6 +22,7 @@ export class Greeting extends Component {
     //Start and refresh current time and date
     setInterval(() => {
       //this.getHour();
+      this.setState({hour: new Date().getHours()})
       this.setState({ date: new Date() });
     }, 1000); //Update interval
   }
@@ -30,18 +30,16 @@ export class Greeting extends Component {
   componentWillUpdate(nextProps, nextState) {
     localStorage.setItem("user", JSON.stringify(nextState.username));
   }
-
+/*
   getHour = () => {
     const date = new Date();
     const hour = date.getHours;
     this.setState({ hour });
   };
-  componentDidMount(){
-    this.getHour()
-  }
+*/ 
   render() {
     const { hour, username, date } = this.state;
-console.log(this.state)
+    //console.log(this.state)
     return (
       <div className="greeting-container">
         <h1 className="time-container">{date.toLocaleTimeString()}</h1>
